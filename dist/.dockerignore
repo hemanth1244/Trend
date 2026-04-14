@@ -1,0 +1,6 @@
+.git
+.gitignore
+terraform/
+monitoring/
+README.md
+*.pem

@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "hemanth1244/trend-app:latest"
+        IMAGE_NAME = "hemanth10bh1010/trend-app:latest"
         AWS_DEFAULT_REGION = "ap-south-1"
         EKS_CLUSTER = "trend-eks-cluster"
     }

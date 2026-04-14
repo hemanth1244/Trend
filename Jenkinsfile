@@ -22,12 +22,14 @@ pipeline {
         }
 
         stage('Push Docker Image') {
-            steps {
-                withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
-                    sh 'echo $PASS | docker login -u $USER --password-stdin'
-                    sh 'docker push $IMAGE_NAME'
-                }
-            }
+             steps {
+                 withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                 sh '''
+                 echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+                 docker push $IMAGE_NAME
+                  '''
+              }
+           } 
         }
 
         stage('Update kubeconfig') {
